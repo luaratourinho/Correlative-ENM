@@ -5,27 +5,30 @@
 
 ________________________________________________________________________________
 
-### **Repository under construction**
+### **Repository under construction...**
+
+
 
 ### Step 0.
 
 Primarily, you have to have a list with the target species' names.
-It is important to check if the species' names are correct.
+It is important to check if the species' names are correct. You can
+search species names using this first routine.
 
-We can check the name of the plants using these scripts:
-
-* 0_check_flora.R
 * 0_search_flora.R
 
-We can check the name of other organisms, such as animals, using these scripts:
+If you already have your own list, you can check species' names using 
+these routines:
 
-** Ps .: missing script
+* 0_check_flora.R
+* 0_check_string.R
 
+** check_string.R (function that you need run along the 6_variable_VIF.R)
 
 ### Step 1.
 
-Now that you have the list of species' names, you will download the species' 
-occurences, using this script:
+Now that you have the list of species' names, you can download the species' 
+occurrences, using:
 
 * 1_download_gbif_specieslink.R
 
@@ -43,7 +46,7 @@ selection of some specific information desired.
 ### Step 3.
 
 Still about cleaning.
-The occurrence recods comes with geographical and environmental bias.
+The occurrence records comes with geographical and environmental bias.
 We must choose what kind of refinement we want to do:
 Whether the geographical (spThin) or environmental (Varela) refinement, or both.
 
@@ -55,7 +58,7 @@ Whether the geographical (spThin) or environmental (Varela) refinement, or both.
 
 Creating a map with occurence records and minimum convex polygon
 
-** Ps .: missing script
+** Ps .: under construction...
 
 
 ### Step 5.
@@ -79,7 +82,7 @@ or from a PCA.
 * 6_variable_PCA.R (building...)
 * 6_variable_VIF.R (building...)
   
-  ** vif_conc. R (function that you need run along the 6_variable_VIF.R)
+  ** vif_conc.R (function that you need run along the 6_variable_VIF.R)
 
 
 ### Step 7.
