@@ -136,4 +136,3 @@ write_csv(gbif_df2, "./outputs/01_gbif_refined.csv")
 write_csv(splist_specieslink, "./outputs/01_unclean_records_specieslink.csv")
 write_csv(gbif_df, "./outputs/01_unclean_records_gbif.csv")
 write_csv(only_keys, "./outputs/01_gbif_taxonkeys.csv")
-
