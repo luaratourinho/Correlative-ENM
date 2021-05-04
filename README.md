@@ -1,10 +1,12 @@
-#########################################################################################################
+################################################################################
 
-# The scripts provided in this repository are a compilation of several scripts found in the literature, on github, edited by me.
+## The scripts provided in this repository are a compilation of several scripts 
+## found in the literature, on github, edited by me.
 
-________________________________________________________________________________________________________
+________________________________________________________________________________
 
-# Step 0.
+
+### Step 0.
 
 Primarily, you have to have a list with the target species' names.
 It is important to check if the species' names are correct.
@@ -19,23 +21,25 @@ We can check the name of other organisms, such as animals, using these scripts:
 ** Ps .: missing script
 
 
-# Step 1.
+### Step 1.
 
-Now that you have the list of species' names, you will download the species' occurences, using this script:
+Now that you have the list of species' names, you will download the species' 
+occurences, using this script:
 
 * 1_download_gbif_specieslink.R
 
 
-# Step 2.
+### Step 2.
 
 The list of species occurrences usually comes with some coordinate errors. 
 In addition, your interest may not be at all coordinates. 
-Therefore, in this step we will do the first cleaning of the data and the selection of some specific information desired.
+Therefore, in this step we will do the first cleaning of the data and the 
+selection of some specific information desired.
 
 * 2_clean_records.R
 
 
-# Step 3.
+### Step 3.
 
 Still about cleaning.
 The occurrence recods comes with geographical and environmental bias.
@@ -46,21 +50,21 @@ Whether the geographical (spThin) or environmental (Varela) refinement, or both.
 * 3_Varela.R
 
 
-# Step 4.
+### Step 4.
 
 Creating a map with occurence records and minimum convex polygon
 
 ** Ps .: missing script
 
 
-# Step 5.
+### Step 5.
 
 Cropping environmental variables
 
 * 5_crop_environmental_variables.R
 
 
-# Step 6.
+### Step 6.
 
 When you use variables available on sites like worldclim / eta ... 
 and you do not know which is the best variable, biologically speaking, 
@@ -77,7 +81,7 @@ or from a PCA.
   ** vif_conc. R (function that you need run along the 6_variable_VIF.R)
 
 
-# Step 7.
+### Step 7.
 
 Here is the Correlative Ecological Niche Model itself.
 There are many packages available to run ENM. 
@@ -89,7 +93,7 @@ Below there are only 3 option: modelR, dismo, biomod
 
 
 
-# References of the most scripts
+#### References of the most scripts
 
 * Andrea Sanchez-Tapia 
 https://github.com/AndreaSanchezTapia
