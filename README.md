@@ -1,10 +1,11 @@
 ################################################################################
 
 ## The scripts provided in this repository are a compilation of several scripts 
-## found in the literature, on github, edited by me.
+## found in the literature, on github, and edited by me.
 
 ________________________________________________________________________________
 
+### **Repository under construction**
 
 ### Step 0.
 
