@@ -2,14 +2,7 @@
 .Rhistory
 *.RData
 .Ruserdata
-.RData
 *.Rproj
 outputs
 data
-0267718-200613084148143.csv
-splist.csv
 0_error_check_string.R
-README.html
-5_crop_environmental_variables_future.R
-6_variable_VIF.R
-6_variable_PCA.R
