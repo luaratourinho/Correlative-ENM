@@ -1,8 +1,11 @@
 
-# ENM using ModelR --------------------------------------------------------
+# Credits ---------------------------
+
+
 # https://github.com/Model-R/modleR
 
 # Script was created by
+
 # Diogo S. B. Rocha (https://github.com/diogosbr)
 # Bruno M. Carvalho (https://github.com/###########)
 
@@ -12,8 +15,12 @@
 
 # Date: 01 abr 2021
 
-# Install packages
 
+
+# ENM using ModelR --------------------------------------------------------
+
+
+# Install packages
 # remotes::install_github("Model-R/modleR", build = TRUE)
 # remotes::install_github("marlonecobos/kuenm")
 # remotes::install_github("mrmaxent/maxnet")

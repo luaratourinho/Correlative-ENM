@@ -1,4 +1,4 @@
-#' Function to check species scientific name in Brazilian Flora 2020 database
+#' Function to check species scientific name in Brazilian Flora 2020 database 
 #'
 #' @param species Character. A species scientific name without authors, ideally already passed by the string check in `Rocc::check_status()`. Accepts only one name at a time. Use `lapply()` or functions from `purrr` package to run for multiple species
 #' @param get_synonyms Logical. If `get_synonyms = TRUE` (default) returns a second element containing information of all synonyms a species has

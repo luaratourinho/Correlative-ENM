@@ -9,7 +9,7 @@
 
 # Date: 03 Aug 2020
 
-# This script is an example for generating pseudoabsence using biomod2
+# This script is an example for generating pseudoabsence using biomod2 ----
 
 
 # Required packages

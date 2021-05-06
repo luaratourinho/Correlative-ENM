@@ -8,7 +8,7 @@
 # Script was edited by
 # Luara Tourinho
 
-# Date: 0? abr 2021
+# Date: April 2021 - under editing...
 
 
 

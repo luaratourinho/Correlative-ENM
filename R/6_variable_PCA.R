@@ -7,8 +7,11 @@
 # Edited by
 # Luara Tourinho
 
-# Date: 01 abr 2021
+# Date: 01 abr 2021 - under editing...
 
+
+
+# Variables selection by PCA ---------------------------------------------
 
 
 # Required packages
@@ -17,9 +20,6 @@ library(raster)
 library(sp)
 library(RStoolbox)
 
-
-
-# Variables selection by PCA ---------------------------------------------
 
 
 

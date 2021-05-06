@@ -1,4 +1,4 @@
-#' Check in the scientific name string
+#' Check in the scientific name string 
 #'
 #' Identifies open nomenclature (aff., cf.) in species scientific name, classification under species level (var. and subsp.), and common mistakes in the a species scientific name. It creates a new column with the original string and the new suggested name. It also flags problematic names (character string with numbers, authors, wrong case, or other names besides genus and epithet etc).
 #'

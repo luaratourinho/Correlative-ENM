@@ -1,14 +1,13 @@
 
 # Credits ---------------------------
 
-# Script created by
-# Diogo Rocha (https://github.com/diogosbr)
-
-# Script edited by
+# Created by
 # Luara Tourinho (https://github.com/luaratourinho)
 
 # Date: 01 abr 2021
 
+
+# Cropping variables from Worldclim ---------------------------------------
 
 
 # Required packages 
@@ -17,9 +16,6 @@ library(raster)
 library(dplyr)
 library(rgeos)
 library(reshape)
-
-
-# Cropping variables from Worldclim ---------------------------------------
 
 
 

@@ -10,6 +10,9 @@
 # Date: 04 May 2021
 
 
+# Getting species records -------------------------------------------------
+
+
 
 # Required packages
 
@@ -25,7 +28,7 @@ library(rgbif) # for occ_download
 library(Rocc) # fpr spescieslink
 
 
-# Getting species records for American Felidae ---------------------------
+# An example for American Felidae ---------------------------
 
 # Creating/reading our species list
 

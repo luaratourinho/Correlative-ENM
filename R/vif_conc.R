@@ -1,3 +1,4 @@
+
 vif_func<-function(in_frame,thresh=10,trace=T,...){
   
   require(fmsb)

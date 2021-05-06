@@ -11,13 +11,13 @@
 # Date: 01 abr 2021
 
 
+
+# Select variable with less collinearity ---------------------------------------
+
+
 library(raster)
 library(dplyr)
 library(corrplot)
-
-
-
-# Select variable with less collinearity ---------------------------------------
 
 
 

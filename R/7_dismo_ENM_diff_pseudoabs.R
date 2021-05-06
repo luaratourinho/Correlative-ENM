@@ -8,7 +8,7 @@
 # Luara Tourinho (https://github.com/luaratourinho)
 # and others
 
-# Date: 21 Aug 2020
+# Date: 06 May 2021
 
 
 # Required packages
@@ -82,9 +82,9 @@ predictors <- stack("./variables/current/tmax_avg.tif",
                     "./variables/current/r_sum10to04.crop.tif")
 
 future_variable <- stack("./variables/future/tmax_avg.tif",
-                 "./variables/future/tmin_avg.tif",
-                 "./variables/future/r_sum05to09.crop.tif",
-                 "./variables/future/r_sum10to04.crop.tif")
+                         "./variables/future/tmin_avg.tif",
+                         "./variables/future/r_sum05to09.crop.tif",
+                         "./variables/future/r_sum10to04.crop.tif")
 
 
 
@@ -112,6 +112,11 @@ write(format( started_time, "%a %b %d %X %Y"), file=paste("./outputs", '/STARTED
 # Pseudoabsence from 7_pseudoans_biomod2.R
 sp.data <- read.csv(paste('./spdata/', "pres_pseudoabs_biomod_tmaxtmin", '.csv', sep=""), header=TRUE, sep=',')
 
+# For using different number of pseudoabsence in each algorithm, for example:
+sp.data <- read.csv(paste('./spdata/', "pres_pseudoabs_1000", '.csv', sep=""), header=TRUE, sep=',')
+sp.data2 <- read.csv(paste('./spdata/', "pres_pseudoabs_304", '.csv', sep=""), header=TRUE, sep=',')
+sp.data3 <- read.csv(paste('./spdata/', "pres_pseudoabs_10000", '.csv', sep=""), header=TRUE, sep=',')
+
 
 # For bioclim and Maxent:
 pres <- sp.data[sp.data$pa==1,2:3]
@@ -119,32 +124,26 @@ abs <- sp.data[sp.data$pa!=1,2:3]
 bg <- randomPoints(predictors, bg.pt)
 colnames(bg) <- c("lon", "lat")
 
-set.seed(10)
+set.seed(10) 
 foldpres <- kfold(pres, 4)
-set.seed(10)
+set.seed(10) 
 foldabs <- kfold(abs, 4)
 
 prestrain <- list()
 prestest <- list()
 abstrain <- list()
 abstest <- list()
-
 for(i in 1:k){
-  # here it divides the presence in 4 groups, associating an integer from 1 to 4 to each one of them
   foldpres <- kfold(pres, 4) 
-  foldabs <- kfold(abs, 4)
-  # takes all presences whose numbers associated with the kfold are different from 1, i.e., 3/4 of the set
+  foldabs <- kfold(abs, 4) 
   prestrain[[i]] <- pres[foldpres != 1,] 
   prestest[[i]] <- pres[foldpres == 1,] 
   abstrain[[i]] <- abs[foldabs != 1,] 
   abstest[[i]] <- abs[foldabs == 1,] 
 } 
-# at the end of the loop it will repeat the random division into 4 groups. 
-# The 10 replicas will have some records repeating at random (bootstrap), 
-# but so you can have as many replicas as you want.
 
 
-# para GLM, random Forest e SVM:  
+# For SVM:  
 train <- list()
 pa_train <- list()
 predtrain <- list()
@@ -158,8 +157,81 @@ for(i in 1:k){
   predtrain[[i]] <- data.frame(cbind(pa=pa_train[[i]], predtrain[[i]]))
 }
 
-rm(train)
-rm(pa_train)
+
+#For Random Forest
+pres2 <- sp.data2[sp.data2$pa==1,2:3]
+abs2 <- sp.data2[sp.data2$pa!=1,2:3] 
+set.seed(10) 
+foldpres2 <- kfold(pres2, 4)
+set.seed(10) 
+foldabs2 <- kfold(abs2, 4)
+
+prestrain2 <- list()
+prestest2 <- list()
+abstrain2 <- list()
+abstest2 <- list()
+for(i in 1:k){
+  foldpres2 <- kfold(pres2, 4) 
+  foldabs2 <- kfold(abs2, 4) 
+  prestrain2[[i]] <- pres2[foldpres2 != 1,] 
+  prestest2[[i]] <- pres2[foldpres2 == 1,] 
+  abstrain2[[i]] <- abs2[foldabs2 != 1,] 
+  abstest2[[i]] <- abs2[foldabs2 == 1,] 
+} 
+
+train2 <- list()
+pa_train2 <- list()
+predtrain2 <- list()
+testpres2 <- list()
+testabs2 <- list()
+
+for(i in 1:k){
+  train2[[i]] <- rbind(prestrain2[[i]], abstrain2[[i]])
+  pa_train2[[i]] <- c(rep(1, nrow(prestrain2[[i]])), rep(0, nrow(abstrain2[[i]])))
+  predtrain2[[i]] <- extract(predictors, train2[[i]])
+  predtrain2[[i]] <- data.frame(cbind(pa=pa_train2[[i]], predtrain2[[i]]))
+}
+
+
+# For GLM:
+pres3 <- sp.data3[sp.data3$pa==1,2:3]
+abs3 <- sp.data3[sp.data3$pa!=1,2:3] 
+set.seed(10) 
+foldpres3 <- kfold(pres3, 4)
+set.seed(10) 
+foldabs3 <- kfold(abs3, 4)
+
+prestrain3 <- list()
+prestest3 <- list()
+abstrain3 <- list()
+abstest3 <- list()
+for(i in 1:k){
+  foldpres3 <- kfold(pres3, 4) 
+  foldabs3 <- kfold(abs3, 4) 
+  prestrain3[[i]] <- pres3[foldpres3 != 1,] 
+  prestest3[[i]] <- pres3[foldpres3 == 1,] 
+  abstrain3[[i]] <- abs3[foldabs3 != 1,] 
+  abstest3[[i]] <- abs3[foldabs3 == 1,] 
+} 
+
+train3 <- list()
+pa_train3 <- list()
+predtrain3 <- list()
+testpres3 <- list()
+testabs3 <- list()
+
+for(i in 1:k){
+  train3[[i]] <- rbind(prestrain3[[i]], abstrain3[[i]])
+  pa_train3[[i]] <- c(rep(1, nrow(prestrain3[[i]])), rep(0, nrow(abstrain3[[i]])))
+  predtrain3[[i]] <- extract(predictors, train3[[i]])
+  predtrain3[[i]] <- data.frame(cbind(pa=pa_train3[[i]], predtrain3[[i]]))
+}
+
+
+
+# Running models ----------------------------------------------------------
+
+
 
 cat( format( Sys.time(), "%a %b %d %X %Y"), '-', 'Running Bioclim model for', sp.n, '...', '\n')
 bc <- list()
@@ -189,15 +261,13 @@ gmthres <- list()
 
 for(i in 1:k){
   cat( format( Sys.time(), "%a %b %d %X %Y"), '-', 'Running GLM (logistic regression) (', i, ') for', sp.n, '...', '\n')
-  gm[[i]] <- glm(model, family=binomial(link="logit"), data=predtrain[[i]]) # reescrever para que os nomes das vari?veis sejam genericos
-  evgm[[i]] <- evaluate(prestest[[i]], abstest[[i]], gm[[i]], predictors) # ao inves de prestest e abstest(que vou ter que gerar a partir dos dados de presenca q eu nao vou usar). ai leio essas duas tabelas aqui.
+  gm[[i]] <- glm(model, family=binomial(link="logit"), data=predtrain3[[i]]) 
+  evgm[[i]] <- evaluate(prestest3[[i]], abstest3[[i]], gm[[i]], predictors) 
   gmTSS[[i]] <- max(evgm[[i]]@TPR + evgm[[i]]@TNR)-1
   gmAUC[[i]] <- evgm[[i]]@auc
   gmkappa[[i]] <- max(evgm[[i]]@kappa)
   gmthres[[i]] <- threshold(evgm[[i]], t.met)
 }
-
-
 
 cat( format( Sys.time(), "%a %b %d %X %Y"), '-', 'Running Random Forest model for', sp.n, '...', '\n')
 rf <- list()
@@ -209,8 +279,8 @@ rfthres <- list()
 
 for(i in 1:k){
   cat( format( Sys.time(), "%a %b %d %X %Y"), '-', 'Running Random Forest (', i, ') model for', sp.n, '...', '\n')
-  rf[[i]] <- randomForest(model, data=predtrain[[i]], na.action=na.omit)
-  evrf[[i]] <- evaluate(prestest[[i]], abstest[[i]], rf[[i]], predictors)
+  rf[[i]] <- randomForest(model, data=predtrain2[[i]], na.action=na.omit) 
+  evrf[[i]] <- evaluate(prestest2[[i]], abstest2[[i]], rf[[i]], predictors)
   rfTSS[[i]] <- max(evrf[[i]]@TPR + evrf[[i]]@TNR)-1
   rfAUC[[i]] <- evrf[[i]]@auc
   rfkappa[[i]] <- max(evrf[[i]]@kappa)
@@ -245,7 +315,7 @@ svthres <- list()
 
 for(i in 1:k){
   cat( format( Sys.time(), "%a %b %d %X %Y"), '-', 'Running SVM (', i, ') model for', sp.n, '...', '\n')
-  sv[[i]] <- ksvm(model, data=predtrain[[i]])
+  sv[[i]] <- ksvm(model, data=predtrain[[i]]) 
   evsv[[i]] <- evaluate(prestest[[i]], abstest[[i]], sv[[i]], predictors)
   svTSS[[i]] <- max(evsv[[i]]@TPR + evsv[[i]]@TNR)-1
   svAUC[[i]] <- evsv[[i]]@auc
@@ -305,7 +375,7 @@ for(i in 1:k){
     cur.bc.bin[[i]] <- cur.bc[[i]] > bcthres[[i]]
     future_variable.bc[[i]] <- predict(future_variable, bc[[i]])
     future_variable.bc.bin[[i]] <- future_variable.bc[[i]] > bcthres[[i]]
-
+    
   } else {
     cur.bc[[i]] <- NULL
     cur.bc.bin[[i]] <- NULL
@@ -370,8 +440,8 @@ future_variable.bc.cont <- calc(x, fun = mean)
 
 
 for(i in 1:k){
-min_max <- range(gcmmg.bc[[i]][], na.rm=T)
- write.table(min_max, paste("gcmmg.bc", i, sp.n, ".txt",  sep="_"))
+  min_max <- range(gcmmg.bc[[i]][], na.rm=T)
+  write.table(min_max, paste("gcmmg.bc", i, sp.n, ".txt",  sep="_"))
 }
 
 rm(cur.bc.bin, cur.bc.cont, cur.bc.ens)

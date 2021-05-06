@@ -1,4 +1,15 @@
+
+# Credits ---------------------------
+
+# Created by
+# Luara Tourinho (https://github.com/luaratourinho)
+
+# Date: 01 abr 2021
+
+
 # Copying future files selected -------------------------------------------
+
+# Reading future variables, as an example of GCM: BCC, IPSL, MIROC6
 
 #BCC
 target_dir <- "./data/env_sel/future/bc50/"

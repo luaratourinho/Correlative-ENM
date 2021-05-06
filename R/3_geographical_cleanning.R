@@ -13,15 +13,15 @@
 # Date: 01 abr 2021
 
 
+# SpThin cleanning ----------------------------------------------------------
+
+
 
 # Required packages
 
 library(spThin) # Aiello-Lammens et al. 2015
 library(tidyverse)
 library(data.table)
-
-
-# SpThin cleanning ----------------------------------------------------------
 
 
 # loading clean occs

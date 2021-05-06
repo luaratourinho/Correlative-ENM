@@ -1,13 +1,17 @@
 
 # Credits ---------------------------
 
-# Script created by
+# Created by
+# Sara Mortara (https://github.com/saramortara/data_cleaning)
 # Bruno M. Carvalho (https://github.com/brunomc-eco)
 
 # Edited by
 # Luara Tourinho (https://github.com/luaratourinho)
 
 # Date: 04 May 2021
+
+
+# Cleaning records --------------------------------------------------------
 
 
 
@@ -17,9 +21,6 @@ library(tidyverse)
 library(CoordinateCleaner)
 library(countrycode)
 
-
-
-# Cleaning records --------------------------------------------------------
 
 
 # reading data
