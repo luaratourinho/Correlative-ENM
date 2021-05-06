@@ -1,7 +1,6 @@
 ################################################################################
 
-## The scripts provided in this repository are a compilation of several scripts 
-## found in the literature, on github, and edited by me.
+## The scripts provided in this repository are a compilation of several scripts found in the literature, on github, and edited by me.
 
 ________________________________________________________________________________
 
@@ -94,6 +93,8 @@ Below there are only 3 option: modelR, dismo, biomod
 * 7_modelR.R
 * 7_dismo.R
 * 7_biomod.R
+
+
 
 
 
