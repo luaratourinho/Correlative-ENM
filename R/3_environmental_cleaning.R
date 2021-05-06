@@ -11,8 +11,12 @@
 # Date: 06 May 2021
 
 
-# Required packages
+# Environmental cleaning using Varela package -----------------------------
 
+
+
+
+# Required packages
 
 library(rgdal)
 library(roxygen2)

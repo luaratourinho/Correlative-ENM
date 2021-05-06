@@ -13,7 +13,8 @@
 # Date: 01 abr 2021
 
 
-# SpThin cleanning ----------------------------------------------------------
+
+# Geographical cleaning using spThin package ------------------------------
 
 
 
