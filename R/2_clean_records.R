@@ -164,9 +164,13 @@ search_occ_by_date <- search_occ_extracted %>%
 # Number of records -------------------------------------------------------
 
 n_records <- count(search_occ_by_date, species)
+n_records_before <- count(search_occ_extracted, species)
 
 # Writing outputs ---------------------------------------------------------
 
 write_csv(n_records, path = "./outputs/02_n_records.csv")
 write_csv(search_occ_by_date, path = "./outputs/02_clean_occ.csv")
+
+write_csv(n_records_before, path = "./outputs/02_n_records.csv")
+write_csv(search_occ_extracted, path = "./outputs/02_clean_occ.csv")
 
