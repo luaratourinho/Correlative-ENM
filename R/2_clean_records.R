@@ -113,7 +113,8 @@ which(is.na(searches_prjext$searches_extract))
 search_occ_extracted <- searches_prjext[!is.na(searches_prjext$searches_extract),]
 head(search_occ_extracted)
 
-search_occ_extracted <- search_occ_extracted[,c(1,7,8,4,5,6,2)]
+search_occ_extracted <- search_occ_extracted[,c("family", "species", "lon", 
+                                                "lat", "year", "country")]
 head(search_occ_extracted)
 dim(search_occ_extracted)
 
