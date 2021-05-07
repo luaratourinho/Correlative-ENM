@@ -77,11 +77,11 @@ occ_download(
 
 # DOI 10.15468/dl.q3p6je
 gbif_df <- fread("./0267718-200613084148143.csv", na.strings = c("", NA))
-gbif_df2 <- gbif_df[,c(8,10,23,22,33,16)]
+
+gbif_df2 <- gbif_df[,c("family","species","decimalLongitude","decimalLatitude",
+                       "year","countryCode")]
+head(gbif_df2)
 colnames(gbif_df2) <- c("family", "species", "lon", "lat", "year", "country")
-# Before
-# [1] "family"           "species"          "decimalLongitude" "decimalLatitude"  "year"            
-# [6] "countryCode" 
 
 
 
@@ -106,15 +106,18 @@ splist_specieslink <- rspeciesLink(dir = "./",
                                     RedList = FALSE,
                                     MaxRecords = NULL)
 
-splist_specieslink2 <- splist_specieslink[,c(11,12,13,14,25,26,18,22)]
+splist_specieslink2 <- splist_specieslink[,c("family","genus","specificEpithet",
+                                             "scientificName","decimalLongitude",
+                                             "decimalLatitude","year","country")]
+
 colnames(splist_specieslink2)
-# [1] "family"           "genus"            "species"          "scientificName"   "decimalLongitude"
-# [6] "decimalLatitude"  "year"             "countryCode" 
 
 splist_specieslink2$species <- with(splist_specieslink2, 
                                     paste(splist_specieslink2$genus, splist_specieslink2$specificEpithet))
 
-splist_specieslink3 <- splist_specieslink2[, c(1,9,5,6,7,8)]
+splist_specieslink3 <- splist_specieslink2[, c("family","species","decimalLongitude",
+                                               "decimalLatitude","year","country")]
+head(splist_specieslink3)
 colnames(splist_specieslink3) <- c("family", "species", "lon", "lat", "year", "country")
 
 
