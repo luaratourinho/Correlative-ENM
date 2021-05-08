@@ -47,7 +47,6 @@ crs.albers <- CRS("+proj=aea +lat_1=-5 +lat_2=-42 +lat_0=-32 +lon_0=-60 +x_0=0
 
 # Creating mask area for variables' correlation
 species_df <- read.csv("./outputs/02_clean_occ.csv")        
-# creating model calibration area for this species
 coords <- species_df[ ,2:3]
 coordinates(coords) <- c("lon", "lat")
 proj4string(coords) <- crs.wgs84  # define original projection - wgs84
@@ -56,13 +55,15 @@ mcp <- gConvexHull(coords) # create minimum convex polygon
 # If you want to add a buffer with a distance or an area around the mpc
 # Attention: gBuffer and gArea are in meters, you have to convert in km if you want to
 mcp_buffer <- gBuffer(mcp, width = gArea(mcp)*2e-07) # 20% bigger than mcp
+# mcp_buffer <- SpatialPolygonsDataFrame(mcp_buffer, data = data.frame("val" = 1, row.names = "buffer"))
 mcp_buffer <- spTransform(mcp_buffer, crs.wgs84)
 
-envi.mask <- mask(envi.cut,mcp_buffer)
+envi.mask <- crop(envi.cut,mcp_buffer)
+envi.mask2 <- mask(envi.mask,mcp_buffer)
 
 # Saving rasters
-dir.create(paste0("./data/env_croped/", "."))
-writeRaster(envi.mask, filename='./data/env_croped/', format="GTiff", 
+dir.create(paste0("./data/env_cropped/present/", "."))
+writeRaster(envi.mask2, filename='./data/env_cropped/', format="GTiff", 
             bylayer=TRUE, suffix="names", overwrite=TRUE)
 
 
@@ -72,28 +73,27 @@ writeRaster(envi.mask, filename='./data/env_croped/', format="GTiff",
 
 
 # Reading a current raster already cropped to use as extent model
-to_crop <- raster('./data/env/_wc2.1_10m_bio_1.tif')
+# to_crop <- raster('./data/env/_wc2.1_10m_bio_1.tif')
+to_crop <- envi.mask2[[1]]
 
 # If future biovariables come separately, build a list like you did before
 raster_files <- list.files("./data/env", full.names = T, 'tif$|bil$')
 
 # If future biovariables come as bands, follow these commands just below
-future_var <- raster("./data/env/wc2.1_2.5m_bioc_BCC-CSM2-MR_ssp585_2041-2060.tif")
-nbands(future_var)
+
+# First option to read the raster stack from worldclim
+# future_var <- raster("./data/env/wc2.1_2.5m_bioc_BCC-CSM2-MR_ssp585_2041-2060.tif")
+# nbands(future_var)
+
+# Second option to read the raster stack from worldclim
 future_var_stk <- stack("./data/env/wc2.1_2.5m_bioc_BCC-CSM2-MR_ssp585_2041-2060.tif")
 
 
 
 # Cropping future variables for each GCMs 
 
-
 # A GCM as example: BCC
 
-future_var_stk <- stack("./data/env/wc2.1_10m_bioc_BCC-CSM2-MR_ssp585_2041-2060.tif")
-
-# Cropping rasters
-
-# All America
 envi_fut.cut<- crop(future_var_stk, to_crop)
 envi_fut.mask<- mask(envi_fut.cut, to_crop)
 
@@ -102,24 +102,7 @@ writeRaster(envi_fut.mask, filename='./data/env_cropped/future/', format="GTiff"
             bylayer=TRUE, suffix="names", overwrite=TRUE)
 
 
-# Now, for other GCMs
-
-#IPSL
-future_var_stk <- stack("./data/wc2.1_2.5m_bioc_IPSL-CM6A-LR_ssp585_2041-2060.tif")
-envi_fut.cut<- crop(future_var_stk, to_crop)
-envi_fut.mask<- mask(envi_fut.cut, to_crop)
-dir.create(paste0("./data/env_cropped/future/ip50"))
-writeRaster(envi_fut.mask, filename='./data/env_cropped/future/ip50/', format="GTiff", 
-            bylayer=TRUE, suffix="names", overwrite=TRUE)
-
-#MIROC6
-future_var_stk <- stack("./data/wc2.1_2.5m_bioc_MIROC6_ssp585_2041-2060.tif")
-envi_fut.cut<- crop(future_var_stk, to_crop)
-envi_fut.mask<- mask(envi_fut.cut, to_crop)
-dir.create(paste0("./data/env_cropped/future/mi50"))
-writeRaster(envi_fut.mask, filename='./data/env_cropped/future/mi50/', format="GTiff", 
-            bylayer=TRUE, suffix="names", overwrite=TRUE)
-
-
-
+# If you are going to select variables from Pearson/Spearman correlation
+# Before crop all rasters from future scenarios, 6_variable_correlation_spearman_and_pearson.R
+# Then come back and crop the selected variables
 

@@ -22,7 +22,7 @@ library(corrplot)
 
 
 # list of files of present variables
-present_list <- list.files("data/env_croped/", pattern = "tif$", full.names = T)
+present_list <- list.files("data/env_cropped/", pattern = "tif$", full.names = T)
 
 # object with present variables
 present_ras <- stack(present_list)
