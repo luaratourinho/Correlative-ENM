@@ -154,6 +154,27 @@ ggplot() +
   coord_sf(xlim = c(-160, -28), ylim = c(-60,90)) +
   theme_bw()
 
+# or with more details
+
+g <- ggplot() +
+  borders("world", colour="gray80", fill="gray80") +
+  geom_point(data = clean_df, aes(x = lon, y = lat, col = species),
+             colour = '#7570b3', size = 1.5) +
+  coord_sf(xlim = c(-85, -30), ylim = c(-35,-5)) +
+  theme_classic() +
+  xlab("") +
+  ylab("") +
+  theme(
+    strip.text = element_text(face = "italic"),
+    legend.text = element_text(face = "italic"),
+    legend.position = "none")
+theme_bw()
+g1 <- g + facet_wrap(species ~ ., ncol = 5)
+g1
+
+ggsave(g1, file = "./Figure_occurrences2.tiff",height = 15, 
+       width = 22, units = "cm")
+
 
 
 # Cleaning old date -------------------------------------------------------
