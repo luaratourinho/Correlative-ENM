@@ -1,5 +1,5 @@
 
-## Classic workflow for ENM
+## The classic workflow for ENM
 ________________________________________________________________________________
 
 
