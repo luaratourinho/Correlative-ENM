@@ -131,12 +131,11 @@ Below are 3 options: modelR, dismo, biomod.
 
 
 * Aiello-Lammens et al. (2015) (https://doi.org/10.1111/ecog.01132)
-https://cran.r-project.org/web/packages/spThin/spThin.pdf
 * Andrea Sanchez-Tapia (https://github.com/AndreaSanchezTapia)
 * Bruno M. Carvalho (https://github.com/brunomc-eco)
-* Diogo Rocha (https://github.com/diogosbr)
 * Daniele Moreira (https://github.com/daniomoreira)
 * Daphne Spier
+* Diogo Rocha (https://github.com/diogosbr)
 * Sara Mortara (https://github.com/saramortara)
 * Varela et al. (2014) (https://github.com/SaraVarela/envSample)
 * Vilela et al. (2018) (doi: 10.4257/oeco.2018.2202.03)
