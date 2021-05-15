@@ -129,23 +129,16 @@ Below are 3 options: modelR, dismo, biomod.
 
 ##### References of the most scripts
 
-* Andrea Sanchez-Tapia 
-https://github.com/AndreaSanchezTapia
-* Sara Mortara 
-https://github.com/saramortara
-* Bruno M. Carvalho 
-https://github.com/brunomc-eco
-* Diogo Rocha 
-https://github.com/diogosbr
-* Daniele Moreira 
-https://github.com/daniomoreira
-* Daphne Spier 
-https://github.com/#########
-* Aiello-Lammens et al. 2015
+
+* Aiello-Lammens et al. (2015) (https://doi.org/10.1111/ecog.01132)
 https://cran.r-project.org/web/packages/spThin/spThin.pdf
-https://doi.org/10.1111/ecog.01132
-* Varela, S., Anderson, R.P., Garcia-Valdes, R., Fernandez-Gonzalez, F., 2014. 
-https://github.com/SaraVarela/envSample
-* Vilela et al. 2018 (doi: 10.4257/oeco.2018.2202.03)
+* Andrea Sanchez-Tapia (https://github.com/AndreaSanchezTapia)
+* Bruno M. Carvalho (https://github.com/brunomc-eco)
+* Diogo Rocha (https://github.com/diogosbr)
+* Daniele Moreira (https://github.com/daniomoreira)
+* Daphne Spier
+* Sara Mortara (https://github.com/saramortara)
+* Varela et al. (2014) (https://github.com/SaraVarela/envSample)
+* Vilela et al. (2018) (doi: 10.4257/oeco.2018.2202.03)
 
 
