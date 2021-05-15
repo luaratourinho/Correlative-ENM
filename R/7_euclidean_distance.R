@@ -8,7 +8,7 @@
 
 # Edited by Luara Tourinho (https://github.com/luaratourinho)
 
-# Date: 04 May 2021
+# Date: 15 May 2021
 
 
 # Euclidean distance is a good option for rare species modelling ----------
@@ -28,12 +28,14 @@ library(vegan)
 # So,first we load the data.
 
 # Occurrence points
-occurence <- paste(system.file(package="dismo"), '/ex/bradypus.csv', sep='')
-occ <- read.table(occurence, header=TRUE, sep=',')[,-1]
+occ <- read.table('/my_directory/my_species.csv', header=TRUE, sep=',')
+occ <- occ[,-1]
+# If I have more than one species in the table, but I want just one
+# occ2 <- occ[occ$species == "Hybanthus albus",]
+# occ <- occ2[,-1]
 
 # Predictors
-fnames <- list.files(path=paste(system.file(package="dismo"), '/ex', sep=''),
-                     pattern='grd', full.names=TRUE )
+fnames  <- list.files("./my_directory", full.names = T, 'tif$|bil$')
 predictors <- stack(fnames)
 
 # Now we run the function using the method = “mean”, and returning actual 
@@ -45,5 +47,5 @@ result <- dist_euc(occ, predictors, method = "mean", suitability = FALSE,
 
 #Plot the distance map:
 plot(result, col = gray.colors(100))
-points(occ, col = rgb(1, 0, 0, .4), pch = 20, cex = .5)
+points(occ, col = rgb(1, 0, 0, .4), pch = 20, cex = 2)
 
