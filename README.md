@@ -122,7 +122,8 @@ Below are 3 options: modelR, dismo, biomod.
 
 ** The Euclidean distance "modelling" is a good option when you are dealing with species with few occurrence records
 
-** Euclidean_distance_function.R (function that you need run along the 7_euclidean_distance.R)
+** Euclidean_distance_function.R (function that you need run before the 7_euclidean_distance.R)
+
 
 
 
@@ -145,5 +146,6 @@ https://cran.r-project.org/web/packages/spThin/spThin.pdf
 https://doi.org/10.1111/ecog.01132
 * Varela, S., Anderson, R.P., Garcia-Valdes, R., Fernandez-Gonzalez, F., 2014. 
 https://github.com/SaraVarela/envSample
+* Vilela et al. 2018 (doi: 10.4257/oeco.2018.2202.03)
 
 
