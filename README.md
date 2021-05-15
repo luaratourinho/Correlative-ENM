@@ -117,8 +117,11 @@ Below are 3 options: modelR, dismo, biomod.
 
 
 ** I included 2 options for modelR, one with and one without the minimum convex polygon (mpc).
+
 ** I included 2 options for dismo, one with one option of pseudoabsence table, and the other with many pseudoabsence tables
+
 ** The Euclidean distance "modelling" is a good option when you are dealing with species with few occurrence records
+
 ** Euclidean_distance_function.R (function that you need run along the 7_euclidean_distance.R)
 
 
