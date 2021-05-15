@@ -10,7 +10,7 @@ ________________________________________________________________________________
 ### **Repository under construction...**
 Some scripts are ready, others are still being edited. Below, I signal which scripts are still being edited.
 
-\
+
 
 #### Step 0.
 
@@ -32,7 +32,7 @@ these routines:
 ** I am still editting 0_check_string.R, but you can find the original one in
 <https://github.com/liibre/rocc/blob/master/R/check_string.R>
 
-\
+
 
 #### Step 1.
 
@@ -41,7 +41,7 @@ occurrences, from GBIF and speciesLink websites using:
 
 * 1_download_gbif_specieslink.R
 
-\
+
 
 #### Step 2.
 
@@ -53,7 +53,7 @@ Here, you can also add your list from a museum or from papers and cleaning it al
 
 * 2_clean_records.R
 
-\
+
 
 #### Step 3.
 
@@ -64,7 +64,7 @@ We must choose what kind of refinement we want to do if the geographical (spThin
 * 3_spThin.R
 * 3_varela.R
 
-\
+
 
 #### Step 4.
 
@@ -72,7 +72,7 @@ Creating a map with occurrence records and a minimum convex polygon
 
 ** under construction...
 
-\
+
 
 #### Step 5.
 
@@ -84,7 +84,7 @@ That way, you won't have to crop all future variables that you won't be using.
 * 5_crop_environmental_variables.R
 * 5_organizing_future_variables.R
 
-\
+
 
 #### Step 6.
 
@@ -101,7 +101,7 @@ There are 3 main methods to select environmental variables:
   
   ** vif_conc.R (function that you need run along the 6_variable_VIF.R)
 
-\
+
 
 #### Step 7.
 
@@ -109,15 +109,19 @@ Here is the Correlative Ecological Niche Model itself (or Species Niche Model, s
 There are many packages available to run ENM/SDM. 
 Below are 3 options: modelR, dismo, biomod. 
 
-* 7_modelR_ENM_with_mpc.R and 7_modelR_ENM_without_mpc
+* 7_modelR_ENM_with_mpc.R
+* 7_modelR_ENM_without_mpc.R
 * 7_dismo_ENM.R and 7_dismo_ENM_diff_pseudoabs.R
 * 7_biomod2_pseudoans.R (editing... here, only pseudoabsence routine)
+* 7_euclidean_distance.R
 
 
 ** I included 2 options for modelR, one with and one without the minimum convex polygon (mpc).
 ** I included 2 options for dismo, one with one option of pseudoabsence table, and the other with many pseudoabsence tables
+** The Euclidean distance "modelling" is a good option when you are dealing with species with few occurrence records
+** Euclidean_distance_function.R (function that you need run along the 7_euclidean_distance.R)
 
-\
+
 
 ##### References of the most scripts
 
@@ -139,4 +143,4 @@ https://doi.org/10.1111/ecog.01132
 * Varela, S., Anderson, R.P., Garcia-Valdes, R., Fernandez-Gonzalez, F., 2014. 
 https://github.com/SaraVarela/envSample
 
-\
+
