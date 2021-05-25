@@ -123,6 +123,8 @@ foreach(
     spTransform(crs.wgs84) %>%
     SpatialPolygonsDataFrame(data = data.frame("val" = 1, row.names = "buffer"))
   
+  # choosing the type of partition depending on the number of records
+  partition_type <- ifelse(nrow(species_df) > 50, "crossvalidation", "bootstrap")
   
   setup_sdmdata(
     species_name = sp,
@@ -140,10 +142,11 @@ foreach(
     png_sdmdata = TRUE,
     n_back = nrow(species_df) * 10,
     # number of pseudoabsences
-    partition_type = "crossvalidation",
+    partition_type = partition_type,
     cv_partitions = 10,
-    cv_n = 1
-  )
+    cv_n = 1,
+    boot_n = 10, 
+    boot_proportion = 0.8)
 }
 
 
